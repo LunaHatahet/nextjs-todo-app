@@ -7,9 +7,8 @@ import { Fragment } from "react";
 
 const AvailableLists = (props) => {
   const todoList = props.lists.map((list) => (
-    <div className={classes.item}>
+    <div className={classes.item} key={list.id}>
       <ListItem
-        key={list.id}
         id={list.id}
         name={list.name}
         status={list.status}
@@ -21,12 +20,14 @@ const AvailableLists = (props) => {
 
   return (
     <Fragment>
-      <div className={classes.actions}>
-        <Link href="/new-list">
-          <button> + Create New List </button>
-        </Link>
-      </div>
-      <Card>{todoList}</Card>
+      <Card>
+        <div className={classes.actions}>
+          <Link href="/new-list">
+            <button> + Create New List </button>
+          </Link>
+        </div>
+        {todoList}
+      </Card>
       <div className={classes.logout}>
         <Link href="/login">
           <button> Logout </button>
